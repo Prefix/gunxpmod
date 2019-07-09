@@ -8,11 +8,11 @@
 
 public Plugin myinfo =
 {
-    name = "Grenades pack",
-    author = "Zombie Swarm Contributors",
-    description = "none",
-    version = "1.0",
-    url = "https://github.com/Prefix/zombieswarm"
+    name = "[UNLOCK] Grenades pack",
+    author = "xbatista",
+    description = "Shop to buy items",
+    version = PLUGIN_VERSION,
+    url = "https://github.com/Prefix/gunxpmod"
 };
 
 #define ITEM_COST 5

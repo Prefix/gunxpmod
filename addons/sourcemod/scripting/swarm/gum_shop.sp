@@ -16,10 +16,10 @@
 public Plugin myinfo =
 {
     name = "Gun Unlocks Mod Shop",
-    author = "Zombie Swarm Contributors",
+    author = "xbatista",
     description = "Shop to buy items",
     version = PLUGIN_VERSION,
-    url = "https://github.com/Prefix/zombieswarm"
+    url = "https://github.com/Prefix/gunxpmod"
 };
 
 int numItems;

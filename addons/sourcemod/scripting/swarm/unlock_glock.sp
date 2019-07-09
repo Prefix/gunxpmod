@@ -9,11 +9,11 @@
 
 public Plugin myinfo =
 {
-    name = "Glock damage booster",
-    author = "Zombie Swarm Contributors",
-    description = "none",
-    version = "1.0",
-    url = "https://github.com/Prefix/zombieswarm"
+    name = "[UNLOCK] Glock damage booster",
+    author = "xbatista",
+    description = "Shop to buy items",
+    version = PLUGIN_VERSION,
+    url = "https://github.com/Prefix/gunxpmod"
 };
 
 #define DamageBoost 2.0

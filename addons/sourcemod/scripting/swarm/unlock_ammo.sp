@@ -9,10 +9,10 @@
 public Plugin myinfo =
 {
     name = "Additional ammo",
-    author = "Zombie Swarm Contributors",
-    description = "none",
-    version = "1.0",
-    url = "https://github.com/Prefix/zombieswarm"
+    author = "xbatista",
+    description = "Shop to buy items",
+    version = PLUGIN_VERSION,
+    url = "https://github.com/Prefix/gunxpmod"
 };
 
 #define ITEM_COST 5

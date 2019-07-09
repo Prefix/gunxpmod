@@ -11,11 +11,11 @@
 
 public Plugin myinfo =
 {
-    name = "Pump knockback",
-    author = "Zombie Swarm Contributors",
-    description = "none",
-    version = "1.0",
-    url = "https://github.com/Prefix/zombieswarm"
+    name = "[UNLOCK] Pump knockback",
+    author = "xbatista",
+    description = "Knockback",
+    version = PLUGIN_VERSION,
+    url = "https://github.com/Prefix/gunxpmod"
 };
 
 #define ITEM_COST 50
