@@ -31,7 +31,7 @@ enum
  * @param value    An integer.
  * @return        None.
  */
-native void setPlayerUnlocks( id, value );
+native void setPlayerUnlocks(int id, int value );
 
 
 /**
@@ -40,7 +40,7 @@ native void setPlayerUnlocks( id, value );
  * @param id    An integer.
  * @return        Returns player's carrying unlocks.
  */
-native int getPlayerUnlocks( id );
+native int getPlayerUnlocks(int id );
 
 
 /**
@@ -56,7 +56,7 @@ native int getMaxLevel( );
  *
  * @return        Returns possible max level in game
  */
-native int getPlayerLevel( id );
+native int getPlayerLevel(int id );
 
 
 /* Search and get plugin item index */
