@@ -54,10 +54,10 @@ public void OnClientDisconnect(int client)
 public void OnClientPutInServer(int client)
 {
     if ( UTIL_IsValidClient(client) && !IsFakeClient(client) )
-        SDKHook(client, SDKHook_TraceAttack, OnTraceAttack);
+        SDKHook(client, SDKHook_OnTakeDamage, onTakeDamage);
 }
 
-public Action OnTraceAttack(int victim, int &attacker, int &inflictor, float &damage, int &damagetype, int &ammotype, int hitbox, int hitgroup)
+public Action onTakeDamage(int victim, int &attacker, int &inflictor, float &damage, int &damagetype, int &weapon, float damageForce[3], float damagePosition[3])
 {
     if (victim == attacker)
         return Plugin_Continue;
