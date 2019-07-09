@@ -2,6 +2,7 @@
   #endinput
 #endif
 #define _gum_included_
+
 /**
  * Number of valid player slots.
  **/
@@ -26,67 +27,36 @@ enum
 /**
  * Sets player's unlocks.
  *
- * @param client    An integer.
- * @param value    An integer.
- * @return        None.
- */
-native void GUM_SetPlayerUnlocks(int client, int value );
-
-/**
- * Sets player's unlocks.
- *
  * @param id    An integer.
  * @param value    An integer.
  * @return        None.
  */
-native void GUM_SetPlayerLevel(int client, int level );
+native void setPlayerUnlocks( id, value );
+
 
 /**
  * Gets player's unlocks.
  *
- * @param client    An integer.
+ * @param id    An integer.
  * @return        Returns player's carrying unlocks.
  */
-native int GUM_GetPlayerUnlocks(int client );
+native int getPlayerUnlocks( id );
 
 
 /**
- * Gets max possible level
- *
- * @return        Returns max possible level
- */
-native int GUM_GetMaxLevel( );
-
-/*
  * Gets player's level.
  *
- * @param client    An integer.
- * @return        returns Player level
+ * @param id    An integer.
+ * @return        Returns player's level.
  */
-native int GUM_GetPlayerLevel(int client );
+native int getMaxLevel( );
 
 /**
- * Gets player's total unlocks to level up.
+ * Gets maximum possible level
  *
  * @return        Returns possible max level in game
  */
-native int GUM_GetUnlocksToLevel(int client );
-
-/**
- * Gets player verbose rank by level
- * @param client    An integer.
- * @param char      String to write result.
- * @return        Bytes written to string
- */
-native int GUM_GetRankName(int client, char[] rankname );
-
-
-/**
- * Called when player level up or being assigned levels
- * @param client    An integer.
- * @return        void
- */
-forward void GUM_OnLevelUp(int client);
+native int getPlayerLevel( id );
 
 
 /* Search and get plugin item index */
