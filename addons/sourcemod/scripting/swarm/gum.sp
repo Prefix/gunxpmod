@@ -7,7 +7,8 @@
 #undef REQUIRE_PLUGIN
 #tryinclude <zombieplague>
 #tryinclude <zombiereloaded>
-#tryinclude <zombiemod>
+#tryinclude <zombieswarm>
+#tryinclude <zriot>
 #define REQUIRE_PLUGIN
 
 #define PLUGIN_VERSION "1.0"
@@ -40,8 +41,12 @@ bool zpLoaded;
 bool zrLoaded;
 #endif
 
-#if defined _zombiemod_included
-bool zmLoaded;
+#if defined _zombieswarm_included
+bool zsLoaded;
+#endif
+
+#if defined _zriot_included
+bool zriotLoaded;
 #endif
 
 Handle cvarMenuTime, cvarDamageReward, cvarDamageRewardVIP, cvarDamageDeal, cvarWeaponMenu,
@@ -114,8 +119,11 @@ public APLRes AskPluginLoad2(Handle myself, bool late, char[] error, int err_max
     // Optional native for ZombieReloaded
     MarkNativeAsOptional("ZR_IsClientZombie");
     
-    // Optional native for ZombieMod
-    MarkNativeAsOptional("getTeam");
+    // Optional native for ZombieSwarm
+    MarkNativeAsOptional("ZS_IsClientZombie");
+
+    // Optional native for ZRiot
+    MarkNativeAsOptional("ZRiot_IsClientZombie");
     
     // Register mod library
     RegPluginLibrary("gum");
@@ -132,10 +140,15 @@ public void OnAllPluginsLoaded()
     zrLoaded = LibraryExists("zombiereloaded");
     #endif
     
-    #if defined _zombiemod_included
-    zmLoaded = LibraryExists("zombiemod");
+    #if defined _zombieswarm_included
+    zsLoaded = LibraryExists("zombieswarm");
+    #endif
+
+    #if defined _zriot_included
+    zriotLoaded = LibraryExists("zriot");
     #endif
 }
+
 public void OnLibraryRemoved(const char[] name)
 {
     #if defined _zombieplaguemod_included
@@ -148,9 +161,14 @@ public void OnLibraryRemoved(const char[] name)
         zrLoaded = false;
     #endif
     
-    #if defined _zombiemod_included
-    if (StrEqual(name, "zombiemod"))
-        zmLoaded = false;
+    #if defined _zombieswarm_included
+    if (StrEqual(name, "zombieswarm"))
+        zsLoaded = false;
+    #endif
+
+    #if defined _zriot_included
+    if (StrEqual(name, "zriot"))
+        zriotLoaded = false;
     #endif
 }
  
@@ -166,9 +184,14 @@ public void OnLibraryAdded(const char[] name)
         zrLoaded = true;
     #endif
     
-    #if defined _zombiemod_included
-    if (StrEqual(name, "zombiemod"))
-        zmLoaded = true;
+    #if defined _zombieswarm_included
+    if (StrEqual(name, "zombieswarm"))
+        zsLoaded = true;
+    #endif
+
+    #if defined _zriot_included
+    if (StrEqual(name, "zriot"))
+        zriotLoaded = true;
     #endif
 }
 
@@ -305,8 +328,12 @@ public Action onWeaponCanUse(int client, int weapon)
     if (zrLoaded && ZR_IsClientZombie(client)) return Plugin_Continue;
     #endif
     
-    #if defined _zombiemod_included
-    if (zmLoaded && getTeam(client) == CS_TEAM_T) return Plugin_Continue;
+    #if defined _zombieswarm_included
+    if (zsloaded && ZS_IsClientZombie(client)) return Plugin_Continue;
+    #endif
+
+    #if defined _zriot_included
+    if (zriotloaded && ZRiot_IsClientZombie(client)) return Plugin_Continue;
     #endif
 
     char sWeapon[32], arrWeaponString[32];
@@ -415,9 +442,13 @@ public Action sayCommand(int client, int args)
         #if defined _zr_included
         if (zrLoaded && ZR_IsClientZombie(client)) return Plugin_Handled;
         #endif
-        
-        #if defined _zombiemod_included
-        if (zmLoaded && getTeam(client) == CS_TEAM_T) return Plugin_Handled;
+
+        #if defined _zombieswarm_included
+        if (zsloaded && ZS_IsClientZombie(client)) return Plugin_Handled;
+        #endif
+
+        #if defined _zriot_included
+        if (zriotloaded && ZRiot_IsClientZombie(client)) return Plugin_Handled;
         #endif
         
         if (!GetConVarInt(cvarWeaponMenu))
@@ -539,8 +570,12 @@ public Action mainMenu(Handle timer, any client)
     if (zrLoaded && ZR_IsClientZombie(client)) return Plugin_Stop;
     #endif
     
-    #if defined _zombiemod_included
-    if (zmLoaded && getTeam(client) == CS_TEAM_T) return Plugin_Stop;
+    #if defined _zombieswarm_included
+    if (zsloaded && ZS_IsClientZombie(client)) return Plugin_Stop;
+    #endif
+
+    #if defined _zriot_included
+    if (zriotloaded && ZRiot_IsClientZombie(client)) return Plugin_Stop;
     #endif
     
     weaponSelected[client] = false;
@@ -581,8 +616,12 @@ public int WeaponMenuHandler(Menu menu, MenuAction action, int client, int item)
         if (zrLoaded && ZR_IsClientZombie(client)) return;
         #endif
         
-        #if defined _zombiemod_included
-        if (zmLoaded && getTeam(client) == CS_TEAM_T) return;
+        #if defined _zombieswarm_included
+        if (zsloaded && ZS_IsClientZombie(client)) return;
+        #endif
+
+        #if defined _zriot_included
+        if (zriotloaded && ZRiot_IsClientZombie(client)) return;
         #endif
     
         switch (item)
@@ -654,8 +693,12 @@ public int secondaryWeaponMenuHandler(Menu menu, MenuAction action, int client, 
         if (zrLoaded && ZR_IsClientZombie(client)) return;
         #endif
         
-        #if defined _zombiemod_included
-        if (zmLoaded && getTeam(client) == CS_TEAM_T) return;
+        #if defined _zombieswarm_included
+        if (zsloaded && ZS_IsClientZombie(client)) return;
+        #endif
+
+        #if defined _zriot_included
+        if (zriotloaded && ZRiot_IsClientZombie(client)) return;
         #endif
     
         weaponSelected[client] = true;
@@ -716,8 +759,12 @@ public int primaryWeaponMenuHandler(Menu menu, MenuAction action, int client, in
         if (zrLoaded && ZR_IsClientZombie(client)) return;
         #endif
         
-        #if defined _zombiemod_included
-        if (zmLoaded && getTeam(client) == CS_TEAM_T) return;
+        #if defined _zombieswarm_included
+        if (zsloaded && ZS_IsClientZombie(client)) return;
+        #endif
+
+        #if defined _zriot_included
+        if (zriotloaded && ZRiot_IsClientZombie(client)) return;
         #endif
     
         rememberPrimary[client] = item + GetConVarInt(cvarMaxSecondary);
