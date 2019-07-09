@@ -14,7 +14,7 @@ public Plugin myinfo =
     name = "[UNLOCK] Pump knockback",
     author = "xbatista",
     description = "Knockback",
-    version = PLUGIN_VERSION,
+    version = "1.0",
     url = "https://github.com/Prefix/gunxpmod"
 };
 

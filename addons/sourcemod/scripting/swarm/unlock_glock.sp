@@ -12,7 +12,7 @@ public Plugin myinfo =
     name = "[UNLOCK] Glock damage booster",
     author = "xbatista",
     description = "Shop to buy items",
-    version = PLUGIN_VERSION,
+    version = "1.0",
     url = "https://github.com/Prefix/gunxpmod"
 };
 

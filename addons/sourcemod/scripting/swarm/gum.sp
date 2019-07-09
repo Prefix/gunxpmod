@@ -329,7 +329,7 @@ public Action onWeaponCanUse(int client, int weapon)
     #endif
     
     #if defined _zombieswarm_included
-    if (zsloaded && ZS_IsClientZombie(client)) return Plugin_Continue;
+    if (zsLoaded && ZS_IsClientZombie(client)) return Plugin_Continue;
     #endif
 
     #if defined _zriot_included
@@ -444,7 +444,7 @@ public Action sayCommand(int client, int args)
         #endif
 
         #if defined _zombieswarm_included
-        if (zsloaded && ZS_IsClientZombie(client)) return Plugin_Handled;
+        if (zsLoaded && ZS_IsClientZombie(client)) return Plugin_Handled;
         #endif
 
         #if defined _zriot_included
@@ -571,7 +571,7 @@ public Action mainMenu(Handle timer, any client)
     #endif
     
     #if defined _zombieswarm_included
-    if (zsloaded && ZS_IsClientZombie(client)) return Plugin_Stop;
+    if (zsLoaded && ZS_IsClientZombie(client)) return Plugin_Stop;
     #endif
 
     #if defined _zriot_included
@@ -617,7 +617,7 @@ public int WeaponMenuHandler(Menu menu, MenuAction action, int client, int item)
         #endif
         
         #if defined _zombieswarm_included
-        if (zsloaded && ZS_IsClientZombie(client)) return;
+        if (zsLoaded && ZS_IsClientZombie(client)) return;
         #endif
 
         #if defined _zriot_included
@@ -694,7 +694,7 @@ public int secondaryWeaponMenuHandler(Menu menu, MenuAction action, int client, 
         #endif
         
         #if defined _zombieswarm_included
-        if (zsloaded && ZS_IsClientZombie(client)) return;
+        if (zsLoaded && ZS_IsClientZombie(client)) return;
         #endif
 
         #if defined _zriot_included
@@ -760,7 +760,7 @@ public int primaryWeaponMenuHandler(Menu menu, MenuAction action, int client, in
         #endif
         
         #if defined _zombieswarm_included
-        if (zsloaded && ZS_IsClientZombie(client)) return;
+        if (zsLoaded && ZS_IsClientZombie(client)) return;
         #endif
 
         #if defined _zriot_included

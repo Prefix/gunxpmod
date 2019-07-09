@@ -11,7 +11,7 @@ public Plugin myinfo =
     name = "Additional ammo",
     author = "xbatista",
     description = "Shop to buy items",
-    version = PLUGIN_VERSION,
+    version = "1.0",
     url = "https://github.com/Prefix/gunxpmod"
 };
 
