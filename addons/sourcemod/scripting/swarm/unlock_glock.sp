@@ -53,7 +53,7 @@ public void OnClientDisconnect(int client)
 
 public void OnClientPutInServer(int client)
 {
-    if ( UTIL_IsValidClient(client) && !IsFakeClient(client) )
+    if ( UTIL_IsValidClient(client) )
         SDKHook(client, SDKHook_OnTakeDamage, onTakeDamage);
 }
 
